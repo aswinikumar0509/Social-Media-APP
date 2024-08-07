@@ -3,6 +3,8 @@
 <h1>👨🏻 Register User</h1>
 <form method="post">
     {% csrf_token %}
-    {{form.as_p}}
+    {{user_form.as_p}}
+    
+    <input type="submit">
 </form>
 {% endblock %}

@@ -12,7 +12,7 @@ class UserEditForm(forms.ModelForm):
 class ProfileEditForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fileds = ('photo',)
+        fields = ('photo',)
 
 
 class LoginForm(forms.Form):
