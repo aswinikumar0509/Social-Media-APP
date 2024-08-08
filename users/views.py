@@ -4,7 +4,6 @@ from django.http import HttpResponse
 from .forms import LoginForm , UserRegistrationForm , UserEditForm , ProfileEditForm
 from django.contrib.auth.decorators import login_required
 from .models import Profile
-# from .forms import UserEditForm , ProfileEditForm
 from posts.models import Post
 
 
@@ -26,11 +25,12 @@ def user_login(request):
         form = LoginForm()
     return render(request , 'users/login.html' , {'form':form})
 
-
+@login_required
 def index(request):
     current_user = request.user
     posts = Post.objects.filter(user = current_user)
-    return render(request ,'users/index.html',{'posts':posts})
+    profile = Profile.objects.filter(user = current_user).first()
+    return render(request ,'users/index.html',{'posts':posts , 'profile':profile})
 
 
 def register(request):
